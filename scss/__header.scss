@@ -1,0 +1,198 @@
+// styles for header
+.header {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $pri_color;
+    transition: $global-transition;
+  }
+
+  .section-container {
+    @include flex;
+    text-align: left;
+    padding: 20px;
+    margin: auto;
+    transition: padding 200ms linear;
+
+    @include responsive_medium {
+      padding: 15px;
+    }
+  }
+
+  .logo a {
+    font-size: 40px;
+    font-weight: 600;
+    color: $pri_dark;
+    cursor: pointer;
+    font-family: 'Edu QLD Beginner', cursive;
+    transition: $global-transition, font-size 200ms linear;
+
+    &:hover {
+      color: $pri_color;
+    }
+
+    @include responsive_medium {
+      font-size: 30px;
+    }
+  }
+
+  .nav {
+    @include responsive_small {
+      display: none;
+    }
+
+    &-list {
+      @include flex;
+    }
+
+    &-item {
+      margin: 0 15px;
+
+      @include responsive_medium {
+        margin: 0 5px;
+      }
+    }
+
+    &-link {
+      padding: 5px;
+      color: $pri_dark;
+      font-weight: 500;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        border-radius: 40px;
+        background-color: $pri_color;
+        transition: inherit;
+      }
+
+      &:hover,
+      &:focus {
+        color: $pri_color;
+
+        &::after {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .toggle-btn {
+    display: none;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+
+    @include responsive_small {
+      display: block;
+    }
+
+    .bar {
+      width: 25px;
+      height: 2.5px;
+      border-radius: 70px;
+      background-color: $pri_dark;
+      position: relative;
+      transition: 150ms all linear;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        background-color: inherit;
+        border-radius: inherit;
+        transition: inherit;
+      }
+
+      &::before {
+        bottom: 7px;
+      }
+      &::after {
+        top: 7px;
+      }
+    }
+  }
+}
+
+.header-toggle-active {
+  &::after {
+    width: 100%;
+  }
+
+  .section-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0 !important;
+  }
+
+  .nav {
+    display: block;
+
+    &-list {
+      display: block;
+      margin: 15px auto;
+    }
+
+    &-item {
+      margin: 8px 0;
+    }
+
+    &-link {
+      padding: 10px 0 !important;
+
+      &::after {
+        display: none !important;
+      }
+    }
+  }
+
+  .toggle-btn .bar {
+    transform: rotate(135deg);
+    background-color: $pri_color;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.header-scroll-active {
+  .section-container {
+    padding: 15px;
+  }
+
+  .logo a {
+    font-size: 35px;
+  }
+
+  .nav-link {
+    padding: 0 5px;
+
+    &::after {
+      bottom: -3px;
+    }
+  }
+}

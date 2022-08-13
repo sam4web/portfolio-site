@@ -1,0 +1,80 @@
+// styles for thanks page
+.thanks__page {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+
+  // icon container start
+  .icon-container {
+    background-color: $pri_color;
+    display: inline-block;
+    padding: 40px;
+    border-radius: 30px;
+    margin-bottom: 55px;
+
+    @include responsive_small {
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    i {
+      font-size: 60px;
+      color: $white;
+
+      @include responsive_small {
+        font-size: 40px;
+      }
+    }
+  }
+  // icon container end
+
+  // content container start
+  .content-container {
+    h2 {
+      font-size: 50px;
+      margin-bottom: 30px;
+      color: $pri_dark;
+
+      @include responsive_small {
+        font-size: 30px;
+        margin-bottom: 15px;
+      }
+    }
+
+    p {
+      color: $pri_grey;
+      font-size: 18px;
+
+      @include responsive_small {
+        font-size: 16px;
+      }
+    }
+  }
+  // content container end
+
+  // back_to_home start
+  .back_to_home {
+    a {
+      color: $pri_color;
+      transition: $global-transition;
+
+      &:hover,
+      &:focus {
+        color: $pri_dark;
+        .fa-arrow-left {
+          opacity: 1;
+        }
+      }
+
+      .fa-arrow-left {
+        opacity: 0;
+      }
+
+      .fa-house {
+        color: $pri_color !important;
+      }
+    }
+  }
+  // back_to_home end
+}
+// page end

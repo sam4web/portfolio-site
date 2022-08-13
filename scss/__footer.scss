@@ -1,0 +1,92 @@
+// styles for footer section
+
+.footer {
+  background-color: $pri_dark;
+  color: $white;
+
+  .section-container {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    text-align: left;
+    margin-top: 0;
+  }
+
+  &-top {
+    @include flex;
+    align-items: flex-start;
+    padding-bottom: 40px;
+
+    @include responsive_small {
+      display: block;
+
+      .info-container {
+        max-width: 385px;
+      }
+
+      .social-container {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .info-container {
+    flex-basis: 380px;
+    @include responsive_medium {
+      flex-basis: 300px;
+    }
+  }
+
+  .social-container {
+    flex-basis: 200px;
+    @include responsive_medium {
+      flex-basis: 150px;
+    }
+  }
+
+  .footer-title {
+    color: $white;
+    font-size: 23px;
+    margin-bottom: 15px;
+  }
+
+  .info-desc {
+    font-size: 15px;
+    line-height: 19.5px;
+  }
+
+  .social-item {
+    display: inline-block;
+    margin-right: 10px;
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: $pri_light;
+      }
+      i {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &-bottom {
+    max-width: 870px;
+    margin: auto;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 300;
+    padding-top: 35px;
+    border-top: 1px solid $white;
+
+    a {
+      color: $white;
+      text-decoration: underline;
+      font-weight: 600;
+
+      &:hover {
+        color: $pri_light;
+      }
+    }
+  }
+}

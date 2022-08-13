@@ -1,0 +1,18 @@
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Edu+QLD+Beginner&family=Open+Sans:wght@300;400;500;600;700&family=Patrick+Hand&family=Poppins:wght@300;400;500;600&display=swap');
+
+// styles import
+@import './_responsive_mixins';
+@import './_mixins';
+@import './_colors';
+
+// general styles
+@import './_common';
+
+// sections
+@import './_header';
+@import './_footer';
+
+// pages
+@import './_thanks';
+@import './_home';
