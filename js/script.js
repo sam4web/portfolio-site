@@ -48,6 +48,7 @@ fetch(Request)
     // get skill and projects data form "data.json"
     loadProjects(data.projects);
     loadSkills(data.skills);
+    loadSocialLinks(data.social);
   });
 
 // generate and load skillTemplate in class ".skill-container"
@@ -55,8 +56,8 @@ const loadSkills = (skills) => {
   let skillTemplate = '';
   skills.forEach((skill) => {
     skillTemplate += `
-    <li class="skill"> ${skill} </li>
-    `;
+      <li class="skill"> ${skill} </li>
+      `;
   });
   $('.skill-container').html(skillTemplate);
 };
@@ -68,39 +69,54 @@ const loadProjects = (projects) => {
     if (index >= 4) return;
     projectTemplate += `\n
     <div class='project-item'>
-      <div class='project-item__image'>
-        <img src='${project.imageLink}' alt='${project.name}' />
-        <ul>
-          <li title='source code'>
-            <a target='_blank' href='${project.sourceCode}'>
-              <i class='fa-solid fa-code'></i>
-            </a>
-          </li>
-          ${
-            'livePreview' in project
-              ? `
-              <li title="live site">
-                  <a target="_blank" href="${project.livePreview}">
-                      <i class="fa-solid fa-eye"></i>
-                  </a>
-              </li>`
-              : ''
-          }
-        </ul>
-      </div>
-      <h3 class='project-item__title'>
-        <a
-          href="${
-            'livePreview' in project ? project.livePreview : project.sourceCode
-          }"
-          target='_blank'
-        >
-          ${project.name}
-        </a>
-      </h3>
+    <div class='project-item__image'>
+    <img src='${project.imageLink}' alt='${project.name}' />
+    <ul>
+    <li title='source code'>
+    <a target='_blank' href='${project.sourceCode}'>
+    <i class='fa-solid fa-code'></i>
+    </a>
+    </li>
+    ${
+      'livePreview' in project
+        ? `
+      <li title="live site">
+      <a target="_blank" href="${project.livePreview}">
+      <i class="fa-solid fa-eye"></i>
+      </a>
+      </li>`
+        : ''
+    }
+    </ul>
     </div>
-      <!-- / project item -->
-        \n`;
+    <h3 class='project-item__title'>
+    <a
+    href="${
+      'livePreview' in project ? project.livePreview : project.sourceCode
+    }"
+    target='_blank'
+    >
+    ${project.name}
+    </a>
+    </h3>
+    </div>
+    <!-- / project item -->
+    \n`;
   });
   $('.project-container').html(projectTemplate);
+};
+
+// generate and load social links in class ".social-list"
+const loadSocialLinks = (socials) => {
+  let socialLinkTemplate = '';
+  socials.forEach((social) => {
+    socialLinkTemplate += `
+    <li class="social-item">
+      <a href="${social.link}" target="_blank">
+        <i class="${social.icon}"></i>
+      </a>
+    </li>
+    `;
+  });
+  $('.social-list').html(socialLinkTemplate);
 };
